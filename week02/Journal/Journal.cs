@@ -1,5 +1,6 @@
 using System;
 
+
 class Journal
 {
     private List<JournalEntry> entries = new List<JournalEntry>();
@@ -108,3 +109,99 @@ class Journal
         Console.WriteLine($"✅ Journal loaded from '{filename}'.\n");
     }
 }
+
+/**
+class Journal
+{
+    public List<JournalEntry> _entries = new List<JournalEntry>();
+    public void WriteNewEntry()
+    {
+        PromptGenerator promptGenerator = new PromptGenerator();
+        string question = promptGenerator.GetRandomPrompt();
+        Console.WriteLine("New Journal Entry");
+        Console.WriteLine($"{question}");
+        Console.WriteLine("Your response: ");
+        string response = Console.ReadLine();
+
+        JournalEntry entry = new JournalEntry()
+        {
+            _prompt = question,
+            _response = response,
+            _date = DateTime.Now
+        };
+
+        _entries.Add(entry);
+        Console.WriteLine("Entry Added");
+
+    }
+    public void DisplayJournal()
+    {
+        Console.WriteLine("Journal Entries");
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("No entries found");
+        }
+        else
+        {
+            foreach (var entry in _entries)
+            {
+                Console.Write(entry.ToString());
+                Console.WriteLine();
+            }
+        }
+    }
+    public void SaveToFile()
+    {
+        Console.WriteLine("Enter a filename: ");
+        string file = Console.ReadLine();
+
+        using (StreamWriter writer = new StreamWriter(file))
+        {
+            foreach (var entry in _entries)
+            {
+                writer.WriteLine(entry._date);
+                writer.WriteLine(entry._prompt);
+                writer.Write(entry._response);
+                writer.WriteLine("End of entry");
+            }
+            Console.WriteLine($"Journal saved to {file}");
+        }      
+    }
+    public void LoadFromFile()
+    {
+        Console.Write("Enter a filename to load the journal: ");
+        string filename = Console.ReadLine();
+
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine("File not found");
+            return;
+        }
+
+        _entries.Clear(); 
+
+        using (StreamReader reader = new StreamReader(filename))
+        {
+            while (!reader.EndOfStream)
+            {
+                string dateLine = reader.ReadLine();
+                string promptLine = reader.ReadLine();
+                string responseLine = reader.ReadLine();
+                string separator = reader.ReadLine();  // ===ENTRY_END===
+
+                if (dateLine != null && promptLine != null && responseLine != null)
+                {
+                    _entries.Add(new JournalEntry
+                    {
+                        _date = DateTime.Parse(dateLine),
+                        _prompt = promptLine,
+                        _response = responseLine
+                    });
+                }
+            }
+        }
+
+        Console.WriteLine($"Journal loaded from '{filename}'");
+    }
+}
+**/

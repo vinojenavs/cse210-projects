@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 class Program
 {
@@ -16,11 +17,12 @@ class Program
         job2._startYear = 2022;
         job2._endYear = 2023;
 
-        Resume myResume = new Resume();
-        myResume._name = "Allison Rose";
-        myResume._jobs.Add(job1);
-        myResume._jobs.Add(job2);
+        Resume resume = new Resume();
+        resume._name = "Allison Rose";
 
-        myResume.Display();
+        resume._job.Add(job1);
+        resume._job.Add(job2);
+        
+        resume.DisplayResume();
     }
 }
