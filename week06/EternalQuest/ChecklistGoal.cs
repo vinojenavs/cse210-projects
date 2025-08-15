@@ -22,7 +22,7 @@ public class ChecklistGoal : Goal
         if (_currentCount < _targetCount)
         {
             _currentCount++;
-            int total = _points;
+            int total = GetPoints();
             if (_currentCount == _targetCount)
                 total += _bonus;
             return total;
@@ -37,6 +37,6 @@ public class ChecklistGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"ChecklistGoal|{_name}|{_description}|{_points}|{_targetCount}|{_bonus}|{_currentCount}";
+        return $"ChecklistGoal|{GetName()}|{GetDescription()}|{GetPoints()}|{_targetCount}|{_bonus}|{_currentCount}";
     }
 }

@@ -8,7 +8,7 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine($"\nScore: {score} | Level: {score / 1000}");
+            Console.WriteLine($"Score: {score} | Level: {score / 1000}");
             Console.WriteLine("1. Create New Goal");
             Console.WriteLine("2. Record Event");
             Console.WriteLine("3. List Goals");
@@ -34,22 +34,22 @@ class Program
 
     static void CreateGoal()
     {
-        Console.WriteLine("\nSelect goal type:");
+        Console.WriteLine("The types of Goals are:");
         Console.WriteLine("1. Simple Goal");
         Console.WriteLine("2. Eternal Goal");
         Console.WriteLine("3. Checklist Goal");
         Console.Write("Your choice: ");
         string input = Console.ReadLine();
 
-        Console.Write("Enter goal name: ");
+        Console.Write("What is the name of your goal ");
         string name = Console.ReadLine();
-        Console.Write("Enter description: ");
+        Console.Write("Enter a short description of your goal ");
         string description = Console.ReadLine();
 
         switch (input)
         {
             case "1":
-                Console.Write("Enter points: ");
+                Console.Write("What is the amount of points associated with the points? ");
                 int points = int.Parse(Console.ReadLine());
                 goals.Add(new SimpleGoal(name, description, points));
                 break;
@@ -93,11 +93,11 @@ class Program
 
     static void ListGoals()
     {
-        Console.WriteLine("\nYour Goals:");
+        Console.WriteLine("Your Goals:");
         for (int i = 0; i < goals.Count; i++)
         {
             Goal g = goals[i];
-            Console.WriteLine($"{i + 1}. {g.GetStatus()} {g.GetName} ({g.GetDescription})");
+            Console.WriteLine($"{i + 1}. {g.GetStatus()} {g.GetName()} ({g.GetDescription()})");
         }
     }
 

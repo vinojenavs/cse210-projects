@@ -18,7 +18,7 @@ public class SimpleGoal : Goal
         if (!_isComplete)
         {
             _isComplete = true;
-            return _points;
+            return GetPoints();
         }
         return 0;
     }
@@ -30,27 +30,7 @@ public class SimpleGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"SimpleGoal|{_name}|{_description}|{_points}|{_isComplete}";
+        return $"SimpleGoal|{GetName()}|{GetDescription()}|{GetPoints()}|{_isComplete}";
     }
 }
 
-public class EternalGoal : Goal
-{
-    public EternalGoal(string name, string description, int points)
-        : base(name, description, points) { }
-
-    public override int RecordEvent()
-    {
-        return _points;
-    }
-
-    public override string GetStatus()
-    {
-        return "[∞]";
-    }
-
-    public override string GetSaveString()
-    {
-        return $"EternalGoal|{_name}|{_description}|{_points}";
-    }
-}

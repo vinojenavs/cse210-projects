@@ -2,9 +2,9 @@ using System;
 
 public class Goal
 {
-    protected string _name;
-    protected string _description;
-    protected int _points;
+    private string _name;
+    private string _description;
+    private int _points;
 
     public Goal(string name, string description, int points)
     {
@@ -52,4 +52,6 @@ public class Goal
     }
     public string GetName() => _name;
     public string GetDescription() => _description;
+
+    public int GetPoints() => _points;
 }
